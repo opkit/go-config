@@ -2,8 +2,7 @@ package json
 
 import (
 	"encoding/json"
-
-	"go-micro.dev/v4/config/encoder"
+	"github.com/opkit/go-config/encoder"
 )
 
 type jsonEncoder struct{}

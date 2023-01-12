@@ -8,8 +8,8 @@ import (
 	"time"
 
 	simple "github.com/bitly/go-simplejson"
-	"go-micro.dev/v4/config/reader"
-	"go-micro.dev/v4/config/source"
+	"github.com/opkit/go-config/reader"
+	"github.com/opkit/go-config/source"
 )
 
 type jsonValues struct {

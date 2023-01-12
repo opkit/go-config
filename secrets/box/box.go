@@ -2,8 +2,8 @@
 package box
 
 import (
+	"github.com/opkit/go-config/secrets"
 	"github.com/pkg/errors"
-	"go-micro.dev/v4/config/secrets"
 	naclbox "golang.org/x/crypto/nacl/box"
 
 	"crypto/rand"

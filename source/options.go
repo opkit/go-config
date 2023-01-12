@@ -2,8 +2,8 @@ package source
 
 import (
 	"context"
-	"go-micro.dev/v4/config/encoder"
-	"go-micro.dev/v4/config/encoder/json"
+	"github.com/opkit/go-config/encoder"
+	"github.com/opkit/go-config/encoder/json"
 )
 
 type Options struct {

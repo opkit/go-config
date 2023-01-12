@@ -9,10 +9,10 @@ import (
 	"sync"
 	"time"
 
-	"go-micro.dev/v4/config/loader"
-	"go-micro.dev/v4/config/reader"
-	"go-micro.dev/v4/config/reader/json"
-	"go-micro.dev/v4/config/source"
+	"github.com/opkit/go-config/loader"
+	"github.com/opkit/go-config/reader"
+	"github.com/opkit/go-config/reader/json"
+	"github.com/opkit/go-config/source"
 )
 
 type memory struct {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"io/fs"
 
-	"go-micro.dev/v4/config/source"
+	"github.com/opkit/go-config/source"
 )
 
 type filePathKey struct{}
