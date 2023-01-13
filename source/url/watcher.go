@@ -1,25 +1,42 @@
 package url
 
 import (
-	"errors"
 	"github.com/opkit/go-config/source"
+	"time"
 )
 
 type urlWatcher struct {
 	u    *urlSource
 	exit chan bool
+	ch   chan *source.ChangeSet
 }
 
 func newWatcher(u *urlSource) (*urlWatcher, error) {
-	return &urlWatcher{
+	uw := &urlWatcher{
 		u:    u,
+		ch:   make(chan *source.ChangeSet),
 		exit: make(chan bool),
-	}, nil
+	}
+	go func() {
+		for {
+			if cs, err := u.Read(); err == nil {
+				uw.ch <- cs
+			}
+			time.Sleep(3 * time.Second)
+		}
+	}()
+
+	return uw, nil
 }
 
 func (u *urlWatcher) Next() (*source.ChangeSet, error) {
-	<-u.exit
-	return nil, errors.New("url watcher stopped")
+
+	select {
+	case cs := <-u.ch:
+		return cs, nil
+	case <-u.exit:
+		return nil, source.ErrWatcherStopped
+	}
 }
 
 func (u *urlWatcher) Stop() error {
